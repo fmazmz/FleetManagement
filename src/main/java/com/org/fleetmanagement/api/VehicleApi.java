@@ -1,7 +1,7 @@
 package com.org.fleetmanagement.api;
 
 import com.org.fleetmanagement.service.VehicleService;
-import com.org.fleetmanagement.vehicle.CreateVehicle;
+import com.org.fleetmanagement.vehicle.CreateVehicleRequest;
 import com.org.fleetmanagement.vehicle.Vehicle;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +37,7 @@ public class VehicleApi {
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<ApiResponse<Vehicle>> create(
-            @RequestBody CreateVehicle createVehicleRequest
+            @RequestBody CreateVehicleRequest createVehicleRequest
     )
     {
         return ResponseEntity.ok(new ApiResponse<>(

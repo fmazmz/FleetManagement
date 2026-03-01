@@ -1,7 +1,7 @@
 package com.org.fleetmanagement.service;
 
 import com.org.fleetmanagement.repository.VehicleRepository;
-import com.org.fleetmanagement.vehicle.CreateVehicle;
+import com.org.fleetmanagement.vehicle.CreateVehicleRequest;
 import com.org.fleetmanagement.vehicle.Vehicle;
 import com.org.fleetmanagement.vehicle.VehicleFactory;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class VehicleService {
         this.factory = factory;
     }
 
-    public Vehicle createVehicle(CreateVehicle request) {
+    public Vehicle createVehicle(CreateVehicleRequest request) {
         Vehicle vehicle = factory.createVehicle(
                 request.type(),
                 request.make(),

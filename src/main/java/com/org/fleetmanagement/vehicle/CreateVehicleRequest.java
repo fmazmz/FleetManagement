@@ -1,7 +1,7 @@
 package com.org.fleetmanagement.vehicle;
 
-public record CreateVehicle(
-        String type,
+public record CreateVehicleRequest(
+        VehicleType type,
         String make,
         String model,
         int year
