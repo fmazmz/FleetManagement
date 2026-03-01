@@ -19,15 +19,21 @@ public abstract class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
+    @Enumerated(EnumType.STRING)
+    private VehicleType type;
+
     private String make;
     private String model;
     private int year;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public Vehicle(String make, String model, int year) {
+    public Vehicle(VehicleType type, String make, String model, int year) {
+        this.type = type;
         this.make = make;
         this.model = model;
         this.year = year;

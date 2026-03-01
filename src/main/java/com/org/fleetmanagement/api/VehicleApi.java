@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -20,7 +21,7 @@ public class VehicleApi {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ApiResponse<List<Vehicle>>> getAll() {
+    public ResponseEntity<ApiResponse<Map<String, List<Vehicle>>>> getAll() {
         return ResponseEntity.ok(new ApiResponse<>(vehicleService.getAllVehicles()));
     }
 
