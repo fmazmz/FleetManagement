@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class Car extends Vehicle {
-    public Car(String make, String model, int year) {
-        super(VehicleType.CAR, make, model, year);
+    public Car(FuelType fuelType, String make, String model, String vin, int year) {
+        super(VehicleType.CAR, fuelType, make, model, vin, year);
     }
 }

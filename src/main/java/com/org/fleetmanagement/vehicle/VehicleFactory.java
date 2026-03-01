@@ -5,7 +5,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class VehicleFactory {
 
-    public Vehicle createVehicle(VehicleType type, String make, String model, int year) {
+    public Vehicle createVehicle(
+            VehicleType type,
+            FuelType fuelType,
+            String make,
+            String model,
+            String vin,
+            int year
+    )
+    {
         Vehicle vehicle;
 
         switch (type) {
@@ -13,7 +21,7 @@ public class VehicleFactory {
                 throw new IllegalArgumentException("Unknown vehicle type");
 
             case VehicleType.CAR:
-                Car car = new Car(make, model, year);
+                Car car = new Car(fuelType, make, model, vin, year);
                 vehicle = car;
                 break;
         }

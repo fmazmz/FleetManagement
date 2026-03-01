@@ -1,5 +1,6 @@
 package com.org.fleetmanagement.vehicle;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,10 +22,14 @@ public abstract class Vehicle {
     private UUID id;
 
     @Enumerated(EnumType.STRING)
-    private VehicleType type;
+    @JsonIgnore
+    private VehicleType vehicleType;
+    @Enumerated(EnumType.STRING)
+    private FuelType fuelType;
 
     private String make;
     private String model;
+    private String vin;
     private int year;
 
     @CreationTimestamp
@@ -32,10 +37,20 @@ public abstract class Vehicle {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public Vehicle(VehicleType type, String make, String model, int year) {
-        this.type = type;
+    public Vehicle(
+            VehicleType vehicleType,
+            FuelType fuelType,
+            String make,
+            String model,
+            String vin,
+            int year
+    )
+    {
+        this.vehicleType = vehicleType;
+        this.fuelType = fuelType;
         this.make = make;
         this.model = model;
+        this.vin = vin;
         this.year = year;
     }
 }

@@ -23,9 +23,11 @@ public class VehicleService {
 
     public Vehicle createVehicle(CreateVehicleRequest request) {
         Vehicle vehicle = factory.createVehicle(
-                request.type(),
+                request.vehicleType(),
+                request.fuelType(),
                 request.make(),
                 request.model(),
+                request.vin(),
                 request.year()
         );
         repository.save(vehicle);
@@ -42,6 +44,6 @@ public class VehicleService {
     public Map<String, List<Vehicle>> getAllVehicles() {
         return repository.findAll()
                 .stream()
-                .collect(Collectors.groupingBy(v -> v.getType().name()));
+                .collect(Collectors.groupingBy(v -> v.getVehicleType().name()));
     }
 }
