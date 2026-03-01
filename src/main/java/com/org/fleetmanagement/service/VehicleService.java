@@ -4,6 +4,7 @@ import com.org.fleetmanagement.repository.VehicleRepository;
 import com.org.fleetmanagement.vehicle.CreateVehicleRequest;
 import com.org.fleetmanagement.vehicle.Vehicle;
 import com.org.fleetmanagement.vehicle.VehicleFactory;
+import com.org.fleetmanagement.vehicle.VehicleResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class VehicleService {
         this.factory = factory;
     }
 
-    public Vehicle createVehicle(CreateVehicleRequest request) {
+    public VehicleResponse createVehicle(CreateVehicleRequest request) {
         Vehicle vehicle = factory.createVehicle(
                 request.vehicleType(),
                 request.fuelType(),
@@ -32,18 +33,23 @@ public class VehicleService {
         );
         repository.save(vehicle);
 
-        return vehicle;
+        return VehicleResponse.from(vehicle);
     }
 
-    public Vehicle getVehicleById(UUID id) {
-        return repository.findById(id)
+    public VehicleResponse getVehicleById(UUID id) {
+        Vehicle vehicle = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException
                         (String.format("Vehicle with id: %s not found", id)));
+
+        return VehicleResponse.from(vehicle);
     }
 
-    public Map<String, List<Vehicle>> getAllVehicles() {
+    public Map<String, List<VehicleResponse>> getAllVehicles() {
         return repository.findAll()
                 .stream()
-                .collect(Collectors.groupingBy(v -> v.getVehicleType().name()));
+                .collect(Collectors.groupingBy(
+                        vehicle -> vehicle.getVehicleType().name(),
+                        Collectors.mapping(VehicleResponse::from, Collectors.toList())
+                ));
     }
 }

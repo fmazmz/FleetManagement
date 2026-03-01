@@ -2,7 +2,7 @@ package com.org.fleetmanagement.api;
 
 import com.org.fleetmanagement.service.VehicleService;
 import com.org.fleetmanagement.vehicle.CreateVehicleRequest;
-import com.org.fleetmanagement.vehicle.Vehicle;
+import com.org.fleetmanagement.vehicle.VehicleResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class VehicleApi {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ApiResponse<Map<String, List<Vehicle>>>> getAll() {
+    public ResponseEntity<ApiResponse<Map<String, List<VehicleResponse>>>> getAll() {
         return ResponseEntity.ok(new ApiResponse<>(vehicleService.getAllVehicles()));
     }
 
@@ -29,7 +29,7 @@ public class VehicleApi {
             value = "{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<ApiResponse<Vehicle>> getById(@PathVariable UUID id) {
+    public ResponseEntity<ApiResponse<VehicleResponse>> getById(@PathVariable UUID id) {
         return ResponseEntity.ok(new ApiResponse<>(vehicleService.getVehicleById(id)));
     }
 
@@ -37,7 +37,7 @@ public class VehicleApi {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<ApiResponse<Vehicle>> create(
+    public ResponseEntity<ApiResponse<VehicleResponse>> create(
             @RequestBody CreateVehicleRequest createVehicleRequest
     )
     {
