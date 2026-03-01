@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,11 +40,8 @@ public class VehicleApi {
             @RequestBody CreateVehicle createVehicleRequest
     )
     {
-        return ResponseEntity.ok(new ApiResponse<>(vehicleService.createVehicle(
-                createVehicleRequest.type(),
-                createVehicleRequest.make(),
-                createVehicleRequest.model(),
-                createVehicleRequest.year()
-        )));
+        return ResponseEntity.ok(new ApiResponse<>(
+                vehicleService.createVehicle(createVehicleRequest)
+        ));
     }
 }
