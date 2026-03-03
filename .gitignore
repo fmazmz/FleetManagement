@@ -1,7 +1,9 @@
 .idea
 *.jar
 target
-settings
-eclipse
-factorypath
-classpath
+
+# nvim cache files
+.settings
+.classpath
+.factorypath
+.project
