@@ -1,3 +1,7 @@
 .idea
 *.jar
 target
+settings
+eclipse
+factorypath
+classpath
