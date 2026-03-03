@@ -1,7 +1,7 @@
-package com.org.fleetmanagement.vehicle;
+package com.org.fleetmanagement.model.vehicle;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.org.fleetmanagement.model.driver.Driver;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +32,10 @@ public abstract class Vehicle {
     private String model;
     private String vin;
     private int year;
+
+    @ManyToOne
+    @JoinColumn(name = "driver_id")
+    private Driver driver;
 
     @CreationTimestamp
     private Instant createdAt;

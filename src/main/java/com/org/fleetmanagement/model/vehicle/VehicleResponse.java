@@ -1,4 +1,4 @@
-package com.org.fleetmanagement.vehicle;
+package com.org.fleetmanagement.model.vehicle;
 
 import java.util.UUID;
 

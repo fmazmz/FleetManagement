@@ -1,10 +1,10 @@
 package com.org.fleetmanagement.service;
 
 import com.org.fleetmanagement.repository.VehicleRepository;
-import com.org.fleetmanagement.vehicle.CreateVehicleRequest;
-import com.org.fleetmanagement.vehicle.Vehicle;
-import com.org.fleetmanagement.vehicle.VehicleFactory;
-import com.org.fleetmanagement.vehicle.VehicleResponse;
+import com.org.fleetmanagement.model.vehicle.CreateVehicleRequest;
+import com.org.fleetmanagement.model.vehicle.Vehicle;
+import com.org.fleetmanagement.model.vehicle.VehicleFactory;
+import com.org.fleetmanagement.model.vehicle.VehicleResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

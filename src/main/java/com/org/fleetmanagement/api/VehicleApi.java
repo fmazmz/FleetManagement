@@ -1,8 +1,8 @@
 package com.org.fleetmanagement.api;
 
 import com.org.fleetmanagement.service.VehicleService;
-import com.org.fleetmanagement.vehicle.CreateVehicleRequest;
-import com.org.fleetmanagement.vehicle.VehicleResponse;
+import com.org.fleetmanagement.model.vehicle.CreateVehicleRequest;
+import com.org.fleetmanagement.model.vehicle.VehicleResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/vehicles")
+@RequestMapping("api/v1/vehicles")
 public class VehicleApi {
     private final VehicleService vehicleService;
 

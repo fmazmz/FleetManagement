@@ -1,11 +1,13 @@
 package com.org.fleetmanagement.repository;
 
-import com.org.fleetmanagement.model.vehicle.Vehicle;
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
+import com.org.fleetmanagement.model.driver.Driver;
 
 @Repository
-public interface VehicleRepository extends JpaRepository<Vehicle, UUID> {
+public interface DriverRepository extends JpaRepository<Driver, UUID> {
+
 }
